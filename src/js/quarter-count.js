@@ -38,3 +38,21 @@ export const remainderDime = (remValue) => {
     return `less than 4 cents left. ${remValue}`;
   }
 }
+
+export const nickelCount = (remValue) => {
+  if (remValue <= 4) {
+    return 0;
+  }
+  else {
+    remValue = remValue - 5;
+    return nickelCount(remValue) + 1;
+  }
+}
+export const remainderNickel = (remValue) => {
+  remValue = remValue % 5;
+  if (remValue === 0) {
+    return 0;
+  } else{
+    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
+  }
+}

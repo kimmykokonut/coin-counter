@@ -1,5 +1,5 @@
 import { experiments } from 'webpack';
-import { quarterCount, remainderQuarter, dimeCount,remainderDime } from '../src/js/quarter-count.js';
+import { quarterCount, remainderQuarter, dimeCount, remainderDime, nickelCount, remainderNickel } from '../src/js/quarter-count.js';
 
 describe('quarterCount()', () => {
   test('should return number of quarters in 25 cents', () => {
@@ -26,7 +26,6 @@ describe('dimeCount()', () => {
     expect(dimeCount(11)).toEqual(1);
   });
 });
-
 describe('remainderDime()', () => {
   test('should return remainder of number input % 10', () => {
     expect(remainderDime(19)).toEqual("the remainder is 9");
@@ -38,3 +37,22 @@ describe('remainderDime()', () => {
     expect(remainderDime(4)).toEqual("less than 4 cents left. 4");
   });
 });
+
+describe('nickelCount()', () => {
+  test('should return number of nickels in remValue', () => {
+    expect(nickelCount(7)).toEqual(1);
+  });
+});
+describe('remainderNickel()', () => {
+  test('should return remainder of number input % 5', () => {
+    expect(remainderNickel(7)).toEqual("the remainder is 2");
+  });
+  test('should return remainder of number input % 5', () => {
+    expect(remainderNickel(5)).toEqual(0);
+  });
+  test('should return remainder of number input % 5', () => {
+    expect(remainderNickel(9)).toEqual("the remainder is 4");
+  });
+});
+
+
