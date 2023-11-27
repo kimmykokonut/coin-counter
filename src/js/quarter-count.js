@@ -34,6 +34,8 @@ export const remainder = (value) => {
     } else {
       return remValue;
     }
+  } else {
+    return value;
   }
 }
 
@@ -55,15 +57,26 @@ export const nickelCount = (remValue) => {
     return nickelCount(remValue) + 1;
   }
 }
-export const assessChange = (amount) => { //amount should be string 4.92
+const howMany = (cents, amount) => { 
+  return () => {
+    let qc = quarterCount(cents);
+    cents = remainder(cents);
+    return () => {
+      let dc = dimeCount(cents);
+      cents = remainder(cents);
+      return () => {
+        let nc = nickelCount(cents);
+        cents = remainder(cents);
+        return `Of ${amount}, there are ${qc} quarters, ${dc} dimes, ${nc} nickels, ${cents} pennies`;
+      }
+    }
+  }
+
+}
+export const assessChange = (amount) => { 
   let splitAmount = amount.split('.');
-  let value = parseInt(splitAmount[1]);//92
-  const howManyQ = quarterCount(value); //3 
-  value = remainder(value); //17
-  const howManyD = dimeCount(value); //1 
-  value = remainder(value); //7
-  const howManyN = nickelCount(value);  //1
-  value = remainder(value); //2 ==pennies
-  console.log(value, amount);
-  return `Of ${amount}, there are ${howManyQ} quarters, ${howManyD} dimes, ${howManyN} nickels, ${value} pennies`;
+  let value = parseInt(splitAmount[1]);
+  const answer = howMany(value, amount);
+  const ansReturn = answer();
+  return (ansReturn()());
 }

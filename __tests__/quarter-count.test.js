@@ -23,6 +23,9 @@ describe('remainder()', () => {
   test('should return remainder of number input', () => {
     expect(remainder(5)).toEqual(0);
   });
+  test('should return remainder of number input', () => {
+    expect(remainder(3)).toEqual(3);
+  });
 });
 
 describe('dimeCount()', () => {
