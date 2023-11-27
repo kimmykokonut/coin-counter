@@ -9,16 +9,34 @@ export const quarterCount = (value) => {
     return quarterCount(value) + 1;
   }
 }
-export const remainderQuarter = (value) => {
-  const remValue = value % 25;
-  if (remValue === 0) {
-    return 0;
-  } else if (remValue > 9) {
-    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
-  } else {
-    return `less than 9 cents left. ${remValue}`;
+
+export const remainder = (value) => {
+  if (value > 24) {
+    const remValue = value % 25;
+    if (remValue === 0) {
+      return 0;
+    } else {
+      return remValue;
+    }
+  }
+  if (value > 9 && value < 25) {
+    const remValue = value % 10;
+    if (remValue === 0) {
+      return 0;
+    } else {
+      return remValue;
+    }
+  }
+  if ((value > 4) && (value < 10)) {
+    const remValue = value % 5;
+    if (remValue === 0) {
+      return 0;
+    } else {
+      return remValue;
+    }
   }
 }
+
 export const dimeCount = (remValue) => {
   if (remValue <= 9) {
     return 0;
@@ -28,17 +46,6 @@ export const dimeCount = (remValue) => {
     return dimeCount(remValue) + 1;
   }
 }
-export const remainderDime = (remValue) => {
-  remValue = remValue % 10;
-  if (remValue === 0) {
-    return 0;
-  } else if (remValue > 4) {
-    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
-  } else {
-    return `less than 4 cents left. ${remValue}`;
-  }
-}
-
 export const nickelCount = (remValue) => {
   if (remValue <= 4) {
     return 0;
@@ -48,11 +55,15 @@ export const nickelCount = (remValue) => {
     return nickelCount(remValue) + 1;
   }
 }
-export const remainderNickel = (remValue) => {
-  remValue = remValue % 5;
-  if (remValue === 0) {
-    return 0;
-  } else{
-    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
-  }
+export const assessChange = (amount) => { //amount should be string 4.92
+  let splitAmount = amount.split('.');
+  let value = parseInt(splitAmount[1]);//92
+  const howManyQ = quarterCount(value); //3 
+  value = remainder(value); //17
+  const howManyD = dimeCount(value); //1 
+  value = remainder(value); //7
+  const howManyN = nickelCount(value);  //1
+  value = remainder(value); //2 ==pennies
+  console.log(value, amount);
+  return `Of ${amount}, there are ${howManyQ} quarters, ${howManyD} dimes, ${howManyN} nickels, ${value} pennies`;
 }
