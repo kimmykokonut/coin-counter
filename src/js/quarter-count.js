@@ -19,3 +19,12 @@ export const remainder = (value) => {
     return `less than 9 cents left. ${remValue}`;
   }
 }
+export const dimeCount = (remValue) => {
+  if (remValue <= 9) {
+    return 0;
+  }
+  else {
+    remValue = remValue - 10;
+    return dimeCount(remValue) + 1;
+  }
+}

@@ -1,5 +1,5 @@
 import { experiments } from 'webpack';
-import { quarterCount, remainder } from '../src/js/quarter-count.js';
+import { quarterCount, remainder, dimeCount } from '../src/js/quarter-count.js';
 
 describe('quarterCount()', () => {
   test('should return number of quarters in 25 cents', () => {
@@ -20,5 +20,10 @@ describe('quarterCount()', () => {
       expect(remainder(11)).toEqual("the remainder is 11");
     });
   });
+});
 
+describe('dimeCount()', () => {
+  test('should return number of dimes in remValue', () => {
+    expect(dimeCount(11)).toEqual(1);
+  });
 });
