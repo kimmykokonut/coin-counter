@@ -9,7 +9,7 @@ export const quarterCount = (value) => {
     return quarterCount(value) + 1;
   }
 }
-export const remainder = (value) => {
+export const remainderQuarter = (value) => {
   const remValue = value % 25;
   if (remValue === 0) {
     return 0;
@@ -26,5 +26,15 @@ export const dimeCount = (remValue) => {
   else {
     remValue = remValue - 10;
     return dimeCount(remValue) + 1;
+  }
+}
+export const remainderDime = (remValue) => {
+  remValue = remValue % 10;
+  if (remValue === 0) {
+    return 0;
+  } else if (remValue > 4) {
+    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
+  } else {
+    return `less than 4 cents left. ${remValue}`;
   }
 }
