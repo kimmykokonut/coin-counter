@@ -14,7 +14,7 @@ export const remainder = (value) => {
   if (remValue === 0) {
     return 0;
   } else if (remValue > 9) {
-    return `the remainder is ${remValue}`; //dimeCount(remainder)
+    return `the remainder is ${remValue}`; // CALL HERE dimeCount(remainder)
   } else {
     return `less than 9 cents left. ${remValue}`;
   }

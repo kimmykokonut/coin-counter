@@ -16,6 +16,9 @@ describe('quarterCount()', () => {
     test('should return remainder of number input % 25', () => {
       expect(remainder(50)).toEqual(0);
     });
+    test('should return remainder of number input % 25', () => {
+      expect(remainder(11)).toEqual("the remainder is 11");
+    });
   });
 
 });
